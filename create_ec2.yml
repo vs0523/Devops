@@ -2,8 +2,8 @@
 - name: Create EC2 Instance
   hosts: localhost
   gather_facts: False
-  collections:
-    - community.aws
+#   collections:
+#     - community.aws
 
   vars:
     region: "us-east-1"
@@ -16,7 +16,7 @@
   
   tasks:
     - name: Create EC2 Instance
-      community.aws.ec2_instance:
+      ec2_instance:
         region: "{{ region }}"
         image_id: "{{ image_id }}"
         instance_type: "{{ instance_type }}"
