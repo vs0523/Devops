@@ -1,0 +1,33 @@
+---
+- name: Create EC2 Instance
+  hosts: localhost
+  gather_facts: False
+  collections:
+    - community.aws
+
+  vars:
+    region: "us-east-1"
+    instance_type: "t2.micro"
+    image_id: "ami-04a0ae173da5807d3"
+    keypair: "ansible-gova"
+    security_group: "sg-0c53b71e41ce49c2c"
+    subnet_id: "subnet-0bb0fa4f752124e68"
+    tag_name: "ansible-server"
+  
+  tasks:
+    - name: Create EC2 Instance
+      community.aws.ec2_instance:
+        region: "{{ region }}"
+        image_id: "{{ image_id }}"
+        instance_type: "{{ instance_type }}"
+        key_name: "{{ keypair }}"
+        security_group: "{{ security_group }}"
+        subnet_id: "{{ subnet_id }}"
+        tags:
+          Name: "{{ tag_name }}"
+        wait: yes
+      register: ec2_instance
+ 
+    - name: print EC2 Instance Details
+      debug:
+        var: ec2_instance
