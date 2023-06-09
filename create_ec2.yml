@@ -9,9 +9,9 @@
     region: "us-east-1"
     instance_type: "t2.micro"
     image_id: "ami-04a0ae173da5807d3"
-    keypair: "ansible-gova"
-    security_group: "sg-0c53b71e41ce49c2c"
-    subnet_id: "subnet-0bb0fa4f752124e68"
+    keypair: "svkey"
+    security_group: "sg-09e9e77d2670971dc"
+    subnet_id: "subnet-031e76e7270ef47f8"
     tag_name: "ansible-server"
     ansible_python_interpreter: /usr/bin/python3
   
